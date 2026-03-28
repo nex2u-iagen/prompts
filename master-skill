@@ -1,43 +1,19 @@
 Crie uma skill chamada master-skill que funciona como um orquestrador de ambiente de desenvolvimento com agentes de IA. Ela deve ser instalada como skill global no Google Antigravity, Claude Code, ou Codex, e é ativada exclusivamente pelo comando /master-skill. Responsabilidades principais:
 
-
-
-
-
 Instalação e configuração de frameworks de agente — A skill deve ser capaz de instalar e configurar frameworks de desenvolvimento baseados em agentes, como BMad, SpecKit e Antigravity Kit. O usuário escolhe qual framework deseja usar e a skill realiza o processo completo de instalação e configuração no ambiente.
 
-
-
-Carregamento de skills externas — A skill deve carregar e disponibilizar no contexto ativo um conjunto de skills armazenadas em uma pasta externa definida pelo usuário, tornando-as acessíveis durante a sessão. Configuração inicial (primeira execução): Na primeira vez que o comando /master-skill for chamado, a skill deve guiar o usuário por uma configuração inicial com duas perguntas:
-
-
-
-
+Carregamento de skills externas — A skill deve carregar e disponibilizar no contexto ativo um conjunto de skills armazenadas em uma pasta externa definida pelo usuário, tornando-as acessíveis durante a sessão. Configuração inicial (primeira execução): Na primeira vez que o comando "/master-skill init" for chamado, a skill deve guiar o usuário por uma configuração inicial com duas perguntas:
 
 Qual agente deseja usar (ex: Claude Code, Antigravity, codex e etc.)
 
-
-
-Qual o caminho (path) da pasta onde estão as skills externas Essas configurações devem ser salvas em um arquivo .json local. Nas execuções seguintes, a skill lê esse arquivo automaticamente, sem repetir as perguntas — a menos que o usuário queira redefinir as configurações. Comportamento geral:
-
-
+Qual o caminho (path) da pasta onde estão as skills externas. Essas configurações devem ser salvas em um arquivo .json local dentro de cada pasta de skill do agente (ex: Claude Code, Antigravity, codex e etc.). Nas execuções seguintes, a skill lê esse arquivo automaticamente, sem repetir as perguntas — a menos que o usuário queira redefinir as configurações "/master-skill reset". Comportamento geral:
 
 A skill não deve ser ativada automaticamente — ela só entra em ação quando o comando /master-skill é explicitamente chamado.
 
-
-
 Deve ser simples de usar: uma única chamada de comando configura e carrega tudo que o usuário precisa para começar a trabalhar com agentes.
-
-
 
 dados para instalação de frameworks:
 
-
-
-
-
 BMad - (npx bmad-method install)
-
 Antigravity Kit (npx @vudovn/ag-kit init)
-
 SpecKit (uv tool install specify-cli --from git+https://github.com/github/spec-kit.git)
